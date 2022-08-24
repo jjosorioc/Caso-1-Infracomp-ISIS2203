@@ -1,8 +1,13 @@
+package procesos;
+
+import buzon.Buzon;
+
+
 /**
  * El primer proceso solo tiene un buzón de salida y el último proceso solo tiene un buzón de
  * salida.
  */
-public class Proceso extends Thread {
+public class ProcesoIntermedio extends Thread {
 
     /**
      * El buzón de entrada es el buzón de salida del proceso anterior.
@@ -29,11 +34,6 @@ public class Proceso extends Thread {
      */
     private String mensaje;
 
-    /**
-     * Arreglo con N subconjuntos del mensaje.
-     */
-    private String[] subconjuntos;
-
 
     /**
      * Constructor de un proceso intermedio.
@@ -42,27 +42,15 @@ public class Proceso extends Thread {
      * @param salidaBuzon
      * @param nivelTransformacion
      * @param idColumna
-     * @param mensaje
      */
-    public Proceso(Buzon entradaBuzon, Buzon salidaBuzon, int nivelTransformacion, int idColumna,
-            String mensaje) {
+    public ProcesoIntermedio(Buzon entradaBuzon, Buzon salidaBuzon, int nivelTransformacion,
+            int idColumna) {
         this.entradaBuzon = entradaBuzon;
         this.salidaBuzon = salidaBuzon;
         this.nivelTransformacion = nivelTransformacion;
         this.idColumna = idColumna;
-        this.mensaje = mensaje;
     }
 
 
-    /**
-     * Constructor para el proceso inicial.
-     * 
-     * @param salidaBuzon
-     * @param subconjuntos
-     */
-    public Proceso(Buzon salidaBuzon, String[] subconjuntos) {
-        this.salidaBuzon = salidaBuzon;
-        this.subconjuntos = subconjuntos;
-    }
 
 }

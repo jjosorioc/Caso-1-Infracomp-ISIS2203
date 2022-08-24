@@ -10,9 +10,6 @@ public class App {
          */
         sc = new Scanner(System.in);
 
-        System.out.println("Ingrese el mensaje inicial: ");
-        String mensajeInicial = sc.nextLine();
-
         System.out.println("Ingrese el número de subconjuntos a generar (N donde N > 3):");
         int numSubconjuntos = sc.nextInt();
 
@@ -26,39 +23,23 @@ public class App {
 
         sc.close();
 
-        try {
-            String[] arr = dividirMensaje(mensajeInicial, numSubconjuntos);
-        } catch (Exception e) {
-            System.out.println(
-                    "El mensaje no puede ser dividido en " + numSubconjuntos + " subconjuntos");
-        }
 
-
+        String[] arr = crearSubconjuntos(numSubconjuntos);
 
     }
 
     /**
-     * Método para dividir el mensaje original en N subconjuntos de igual tamaño.
+     * Método para generar los N subconjuntos
      * 
-     * @param mensaje
      * @param numSubconjuntos
-     * @return
-     * @throws Exception
+     * @return Arreglo con N subconjuntos
      */
-    private static String[] dividirMensaje(String mensaje, int numSubconjuntos) throws Exception {
+    private static String[] crearSubconjuntos(int numSubconjuntos) {
         String[] arr = new String[numSubconjuntos];
+        String mensaje = "M";
 
-        if (mensaje.length() % numSubconjuntos != 0)
-            throw new Exception("El tamaño del mensaje debe ser divisible por N");
-
-        int tamanioSubconjunto = mensaje.length() / numSubconjuntos;
-
-        int index = 0;
-
-        for (int i = 0; i < mensaje.length(); i = i + tamanioSubconjunto) {
-            arr[index] = mensaje.substring(i, i + tamanioSubconjunto);
-            index++;
-        }
+        for (int i = 0; i < numSubconjuntos; i++)
+            arr[i] = mensaje + (i + 1);
 
         return arr;
     }
