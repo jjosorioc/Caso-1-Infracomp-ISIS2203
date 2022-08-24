@@ -1,3 +1,4 @@
+import java.util.LinkedList;
 
 /**
  * Hay 8 buzones en total. 6 intermedios tienen el mismo tamaño. 2 tienen 3 veces el tamaño, siendo
@@ -5,6 +6,13 @@
  */
 public class Buzon {
 
-    private int capacidad; // Ni idea que debe hacer la capacidad
+    /*
+     * Capcidad del buzón.
+     */
+    private int capacidad;
 
+    /**
+     * Buffer
+     */
+    private LinkedList<Integer> list = new LinkedList<Integer>();
 }
