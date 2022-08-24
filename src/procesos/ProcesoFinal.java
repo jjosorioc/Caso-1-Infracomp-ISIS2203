@@ -28,12 +28,14 @@ public class ProcesoFinal extends Thread {
         while (true) {
             String subconjunto = entradaBuzon.extraer();
             if (subconjunto.equals("FIN")) {
-                finCounter--;
+                finCounter++;
             }
             System.out.println(subconjunto);
             if (finCounter == 3) {
+
                 break;
             }
         }
+        System.out.println("FIN PROCESO FINAL");
     }
 }

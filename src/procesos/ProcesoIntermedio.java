@@ -76,7 +76,7 @@ public class ProcesoIntermedio extends Thread {
             salidaBuzon.almacenar(mensaje + this.toString());
         }
 
-
+        System.out.println("FIN PROCESO " + this.toString());
 
     }
 

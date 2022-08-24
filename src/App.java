@@ -88,6 +88,7 @@ public class App {
         procesoInicio.join();
         procesoFinal.join();
 
+        System.out.println("APLICACION FINALIZADA");
 
     }
 

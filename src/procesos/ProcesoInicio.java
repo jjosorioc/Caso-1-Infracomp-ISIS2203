@@ -41,6 +41,8 @@ public class ProcesoInicio extends Thread {
 
         for (int i = 0; i < 3; i++)
             salidaBuzon.almacenar("FIN");
+
+        System.out.println("FIN PROCESO INICIAL");
     }
 
 
