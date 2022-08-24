@@ -24,4 +24,45 @@ public class Proceso extends Thread {
      */
     private int idColumna;
 
+    /**
+     * Mensaje que lleva el proceso
+     */
+    private String mensaje;
+
+    /**
+     * Arreglo con N subconjuntos del mensaje.
+     */
+    private String[] subconjuntos;
+
+
+    /**
+     * Constructor de un proceso intermedio.
+     * 
+     * @param entradaBuzon
+     * @param salidaBuzon
+     * @param nivelTransformacion
+     * @param idColumna
+     * @param mensaje
+     */
+    public Proceso(Buzon entradaBuzon, Buzon salidaBuzon, int nivelTransformacion, int idColumna,
+            String mensaje) {
+        this.entradaBuzon = entradaBuzon;
+        this.salidaBuzon = salidaBuzon;
+        this.nivelTransformacion = nivelTransformacion;
+        this.idColumna = idColumna;
+        this.mensaje = mensaje;
+    }
+
+
+    /**
+     * Constructor para el proceso inicial.
+     * 
+     * @param salidaBuzon
+     * @param subconjuntos
+     */
+    public Proceso(Buzon salidaBuzon, String[] subconjuntos) {
+        this.salidaBuzon = salidaBuzon;
+        this.subconjuntos = subconjuntos;
+    }
+
 }
