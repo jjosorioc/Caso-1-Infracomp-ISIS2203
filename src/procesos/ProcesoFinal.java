@@ -18,4 +18,17 @@ public class ProcesoFinal extends Thread {
     public ProcesoFinal(Buzon entradaBuzon) {
         this.entradaBuzon = entradaBuzon;
     }
+
+
+
+    @Override
+    public void run() {
+        while (true) {
+            String subconjunto = entradaBuzon.extraer();
+            if (subconjunto == null) {
+                break;
+            }
+            System.out.println(subconjunto);
+        }
+    }
 }

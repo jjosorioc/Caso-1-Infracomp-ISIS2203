@@ -25,7 +25,7 @@ public class ProcesoIntermedio extends Thread {
     private int nivelTransformacion;
 
     /**
-     * Nivel de fila (Las columnas en el ejemplo) Número del 1 al 3
+     * Las columnas en el ejemplo Número del 1 al 3
      */
     private int idColumna;
 

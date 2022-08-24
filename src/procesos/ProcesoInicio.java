@@ -26,5 +26,12 @@ public class ProcesoInicio extends Thread {
         this.subconjuntos = subconjuntos;
     }
 
+    @Override
+    public void run() {
+        for (int i = 0; i < subconjuntos.length; i++) {
+            salidaBuzon.almacenar(subconjuntos[i]);
+        }
+    }
+
 
 }
