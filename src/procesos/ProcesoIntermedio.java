@@ -52,5 +52,17 @@ public class ProcesoIntermedio extends Thread {
     }
 
 
+    @Override
+    public void run() {
+        mensaje = entradaBuzon.extraer();
+
+        salidaBuzon.almacenar(mensaje + this.toString());
+    }
+
+
+    @Override
+    public String toString() {
+        return "" + nivelTransformacion + idColumna;
+    }
 
 }
