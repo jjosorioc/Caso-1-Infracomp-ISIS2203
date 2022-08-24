@@ -1,5 +1,6 @@
 package procesos;
 
+import java.util.Random;
 import buzon.Buzon;
 
 public class ProcesoInicio extends Thread {
@@ -28,9 +29,18 @@ public class ProcesoInicio extends Thread {
 
     @Override
     public void run() {
+        Random random = new Random();
         for (int i = 0; i < subconjuntos.length; i++) {
+
+            try {
+                Thread.sleep(random.nextLong(50, 500));
+            } catch (InterruptedException e) {
+            }
             salidaBuzon.almacenar(subconjuntos[i]);
         }
+
+        for (int i = 0; i < 3; i++)
+            salidaBuzon.almacenar("FIN");
     }
 
 

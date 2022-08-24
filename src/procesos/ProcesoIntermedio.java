@@ -1,5 +1,6 @@
 package procesos;
 
+import java.util.Random;
 import buzon.Buzon;
 
 
@@ -54,15 +55,35 @@ public class ProcesoIntermedio extends Thread {
 
     @Override
     public void run() {
-        mensaje = entradaBuzon.extraer();
+        Random random = new Random();
+        while (true) {
+            mensaje = entradaBuzon.extraer();
+            if (mensaje.equals("FIN")) {
+                try {
+                    Thread.sleep(random.nextLong(50, 500));
+                } catch (InterruptedException e) {
 
-        salidaBuzon.almacenar(mensaje + this.toString());
+                }
+                salidaBuzon.almacenar("FIN");
+                break;
+            }
+
+            try {
+                Thread.sleep(random.nextLong(50, 500));
+            } catch (InterruptedException e) {
+
+            }
+            salidaBuzon.almacenar(mensaje + this.toString());
+        }
+
+
+
     }
 
 
     @Override
     public String toString() {
-        return "" + nivelTransformacion + idColumna;
+        return "T" + nivelTransformacion + idColumna;
     }
 
 }

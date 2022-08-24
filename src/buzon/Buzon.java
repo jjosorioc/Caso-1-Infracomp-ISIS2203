@@ -61,7 +61,7 @@ public class Buzon {
                 System.err.println("Ocurrió un error al intentar extraer el subconjunto");
             }
         String s = this.list.removeFirst();
-        notify();
+        notifyAll();
         return s;
     }
 

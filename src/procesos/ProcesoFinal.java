@@ -23,12 +23,17 @@ public class ProcesoFinal extends Thread {
 
     @Override
     public void run() {
+        int finCounter = 0;
+
         while (true) {
             String subconjunto = entradaBuzon.extraer();
-            if (subconjunto == null) {
-                break;
+            if (subconjunto.equals("FIN")) {
+                finCounter--;
             }
             System.out.println(subconjunto);
+            if (finCounter == 3) {
+                break;
+            }
         }
     }
 }
