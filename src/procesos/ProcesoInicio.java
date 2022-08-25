@@ -45,7 +45,8 @@ public class ProcesoInicio extends Thread {
             if (this.salidaBuzon.isFull())
                 ProcesoInicio.yield();
             else
-                salidaBuzon.almacenar(subconjuntos[i]);
+                salidaBuzon.almacenarProcesoInicial(subconjuntos[i]);
+
         }
 
         /*
@@ -59,7 +60,8 @@ public class ProcesoInicio extends Thread {
             }
 
             else
-                salidaBuzon.almacenar("FIN");
+                salidaBuzon.almacenarProcesoInicial("FIN");
+
 
     }
 
