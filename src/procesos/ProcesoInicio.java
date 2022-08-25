@@ -34,35 +34,40 @@ public class ProcesoInicio extends Thread {
         /*
          * Enviar los subconjuntos al buzón externo.
          */
-        for (int i = 0; i < subconjuntos.length; i++) {
 
-            try {
-                // Dormir el thread
-                Thread.sleep(random.nextLong(50, 500));
-            } catch (InterruptedException e) {
+        int enviados = 0;
+        while (enviados != subconjuntos.length) {
+            while (!this.salidaBuzon.isFull()) {
+                try {
+                    // Dormir el thread
+                    Thread.sleep(random.nextLong(50, 500));
+                } catch (InterruptedException e) {
+                }
+                salidaBuzon.almacenarProcesoInicial(subconjuntos[enviados]);
+                enviados++;
             }
-            // Espera activa
-            if (this.salidaBuzon.isFull())
-                ProcesoInicio.yield();
-            else
-                salidaBuzon.almacenarProcesoInicial(subconjuntos[i]);
-
+            ProcesoInicio.yield();
         }
+
 
         /*
          * Enviar los mensajes de FIN
          */
-        for (int i = 0; i < 3; i++)
-            if (this.salidaBuzon.isFull()) {
-                i--;
-                // Espera activa
-                ProcesoInicio.yield();
-            }
+        enviados = 0;
 
-            else
+        while (enviados != 3) {
+            while (!this.salidaBuzon.isFull()) {
+                try {
+                    // Dormir el thread
+                    Thread.sleep(random.nextLong(50, 500));
+                } catch (InterruptedException e) {
+                }
+                // Enviar mensaje de FIN
                 salidaBuzon.almacenarProcesoInicial("FIN");
-
-
+                enviados++;
+            }
+            ProcesoInicio.yield();
+        }
     }
 
 

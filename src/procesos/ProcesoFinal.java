@@ -25,11 +25,8 @@ public class ProcesoFinal extends Thread {
     public void run() {
         int finCounter = 0;
 
-        while (true) {
-            if (entradaBuzon.isEmpty())
-                ProcesoFinal.yield();
-            else {
-                // Espera activa
+        while (finCounter != 3) {
+            while (!entradaBuzon.isEmpty()) {
                 String subconjunto = entradaBuzon.extraerProcesoFinal();
                 if (subconjunto.equals("FIN")) {
                     finCounter++;
@@ -39,6 +36,7 @@ public class ProcesoFinal extends Thread {
                     break;
                 }
             }
+            ProcesoFinal.yield();
         }
     }
 }
