@@ -66,5 +66,24 @@ public class Buzon {
     }
 
 
+    /**
+     * Retorna si la lista está llena
+     * 
+     * @return
+     */
+    public boolean isFull() {
+        return this.list.size() == this.capacidad;
+    }
+
+
+    /**
+     * Retorna si la lista está vacía
+     * 
+     * @return
+     */
+    public boolean isEmpty() {
+        return this.list.size() == 0;
+    }
+
 
 }

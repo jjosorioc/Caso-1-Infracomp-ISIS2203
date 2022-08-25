@@ -26,13 +26,17 @@ public class ProcesoFinal extends Thread {
         int finCounter = 0;
 
         while (true) {
-            String subconjunto = entradaBuzon.extraer();
-            if (subconjunto.equals("FIN")) {
-                finCounter++;
-            }
-            System.out.println(subconjunto);
-            if (finCounter == 3) {
-                break;
+            if (entradaBuzon.isEmpty())
+                ProcesoFinal.yield();
+            else {
+                String subconjunto = entradaBuzon.extraer();
+                if (subconjunto.equals("FIN")) {
+                    finCounter++;
+                }
+                System.out.println(subconjunto);
+                if (finCounter == 3) {
+                    break;
+                }
             }
         }
     }
