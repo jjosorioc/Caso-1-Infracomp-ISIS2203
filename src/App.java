@@ -85,9 +85,6 @@ public class App {
         procesoInicio.start();
         procesoFinal.start();
 
-        procesoInicio.join();
-        procesoFinal.join();
-
 
     }
 
