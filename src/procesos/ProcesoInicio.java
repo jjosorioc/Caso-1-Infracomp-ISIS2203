@@ -1,6 +1,6 @@
 package procesos;
 
-import java.util.Random;
+
 import buzon.Buzon;
 
 public class ProcesoInicio extends Thread {
