@@ -59,11 +59,6 @@ public class ProcesoIntermedio extends Thread {
         while (true) {
             mensaje = entradaBuzon.extraer();
             if (mensaje.equals("FIN")) {
-                try {
-                    Thread.sleep(random.nextLong(50, 500));
-                } catch (InterruptedException e) {
-
-                }
                 salidaBuzon.almacenar("FIN");
                 break;
             }
