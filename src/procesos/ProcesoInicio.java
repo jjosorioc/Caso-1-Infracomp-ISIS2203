@@ -1,6 +1,6 @@
 package procesos;
 
-import java.util.Random;
+
 import buzon.Buzon;
 
 public class ProcesoInicio extends Thread {
@@ -29,20 +29,26 @@ public class ProcesoInicio extends Thread {
 
     @Override
     public void run() {
-        Random random = new Random();
-        for (int i = 0; i < subconjuntos.length; i++) {
+        /*
+         * Enviar los subconjuntos al buzón externo.
+         */
 
-            try {
-                Thread.sleep(random.nextLong(50, 500));
-            } catch (InterruptedException e) {
+        int enviados = 0;
+        while (enviados != subconjuntos.length) {
+            while (!this.salidaBuzon.isFull() && enviados != subconjuntos.length) {
+                salidaBuzon.almacenarProcesoInicial(subconjuntos[enviados]);
+                enviados++;
             }
-            salidaBuzon.almacenar(subconjuntos[i]);
+            ProcesoInicio.yield();
         }
 
+<<<<<<< HEAD
         for (int i = 0; i < 3; i++)
             salidaBuzon.almacenar("FIN");
 
         System.out.println("FIN PROCESO INICIAL");
+=======
+>>>>>>> main
     }
 
 

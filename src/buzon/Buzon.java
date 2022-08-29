@@ -44,7 +44,18 @@ public class Buzon {
             }
 
         this.list.add(s);
-        notify();
+        notifyAll();
+    }
+
+
+    /**
+     * Almacenar un subconjunto con espera activa.
+     * 
+     * @param s
+     */
+    public synchronized void almacenarProcesoInicial(String s) {
+        this.list.add(s);
+        notifyAll();
     }
 
 
@@ -65,6 +76,38 @@ public class Buzon {
         return s;
     }
 
+
+    /**
+     * Extraer un subconjunto con espera activa
+     * 
+     * @return
+     */
+    public synchronized String extraerProcesoFinal() {
+        String s = this.list.removeFirst();
+        notifyAll();
+        return s;
+    }
+
+
+
+    /**
+     * Retorna si la lista está llena
+     * 
+     * @return
+     */
+    public boolean isFull() {
+        return this.list.size() == this.capacidad;
+    }
+
+
+    /**
+     * Retorna si la lista está vacía
+     * 
+     * @return
+     */
+    public boolean isEmpty() {
+        return this.list.size() == 0;
+    }
 
 
 }

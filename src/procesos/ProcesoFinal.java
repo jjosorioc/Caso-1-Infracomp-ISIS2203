@@ -25,6 +25,7 @@ public class ProcesoFinal extends Thread {
     public void run() {
         int finCounter = 0;
 
+<<<<<<< HEAD
         while (true) {
             String subconjunto = entradaBuzon.extraer();
             if (subconjunto.equals("FIN")) {
@@ -34,7 +35,20 @@ public class ProcesoFinal extends Thread {
             if (finCounter == 3) {
 
                 break;
+=======
+        while (finCounter != 3) {
+            while (!entradaBuzon.isEmpty()) {
+                String subconjunto = entradaBuzon.extraerProcesoFinal();
+                if (subconjunto.equals("FIN")) {
+                    finCounter++;
+                }
+                System.out.println(subconjunto);
+                if (finCounter == 3) {
+                    break;
+                }
+>>>>>>> main
             }
+            ProcesoFinal.yield();
         }
         System.out.println("FIN PROCESO FINAL");
     }

@@ -52,6 +52,15 @@ public class App {
         crearBuzonesIntermedios(tamanioBuzonesIntermedios);
 
 
+        /*
+         * Crear Proceso Inicial y Final
+         */
+        ProcesoInicio procesoInicio = new ProcesoInicio(buzonInicio, arr);
+        ProcesoFinal procesoFinal = new ProcesoFinal(buzonFinal);
+        procesoInicio.start();
+        procesoFinal.start();
+
+
 
         /*
          * Crear procesos intermedios
@@ -71,9 +80,9 @@ public class App {
                 }
 
                 procesoIntermedio.start();
-
             }
         }
+<<<<<<< HEAD
 
         /*
          * Crear Proceso Inicial y Final
@@ -90,6 +99,8 @@ public class App {
 
         System.out.println("APLICACION FINALIZADA");
 
+=======
+>>>>>>> main
     }
 
     /**
@@ -99,11 +110,17 @@ public class App {
      * @return Arreglo con N subconjuntos
      */
     private static String[] crearSubconjuntos(int numSubconjuntos) {
-        String[] arr = new String[numSubconjuntos];
+        String[] arr = new String[numSubconjuntos + 3];
         String mensaje = "M";
 
-        for (int i = 0; i < numSubconjuntos; i++)
-            arr[i] = mensaje + (i + 1);
+        for (int i = 0; i < arr.length; i++) {
+            if (i < arr.length - 3) {
+                arr[i] = mensaje + (i + 1);
+            } else
+                arr[i] = "FIN";
+
+        }
+
 
         return arr;
     }
