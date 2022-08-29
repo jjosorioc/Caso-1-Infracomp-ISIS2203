@@ -29,8 +29,6 @@ public class ProcesoInicio extends Thread {
 
     @Override
     public void run() {
-        Random random = new Random();
-
         /*
          * Enviar los subconjuntos al buzón externo.
          */
@@ -38,36 +36,12 @@ public class ProcesoInicio extends Thread {
         int enviados = 0;
         while (enviados != subconjuntos.length) {
             while (!this.salidaBuzon.isFull() && enviados != subconjuntos.length) {
-                try {
-                    // Dormir el thread
-                    Thread.sleep(random.nextLong(50, 500));
-                } catch (InterruptedException e) {
-                }
                 salidaBuzon.almacenarProcesoInicial(subconjuntos[enviados]);
                 enviados++;
             }
             ProcesoInicio.yield();
         }
 
-
-        /*
-         * Enviar los mensajes de FIN
-         */
-        enviados = 0;
-
-        while (enviados != 3) {
-            while (!this.salidaBuzon.isFull() && enviados != 3) {
-                try {
-                    // Dormir el thread
-                    Thread.sleep(random.nextLong(50, 500));
-                } catch (InterruptedException e) {
-                }
-                // Enviar mensaje de FIN
-                salidaBuzon.almacenarProcesoInicial("FIN");
-                enviados++;
-            }
-            ProcesoInicio.yield();
-        }
     }
 
 
