@@ -52,6 +52,15 @@ public class App {
         crearBuzonesIntermedios(tamanioBuzonesIntermedios);
 
 
+        /*
+         * Crear Proceso Inicial y Final
+         */
+        ProcesoInicio procesoInicio = new ProcesoInicio(buzonInicio, arr);
+        ProcesoFinal procesoFinal = new ProcesoFinal(buzonFinal);
+        procesoInicio.start();
+        procesoFinal.start();
+
+
 
         /*
          * Crear procesos intermedios
@@ -71,21 +80,8 @@ public class App {
                 }
 
                 procesoIntermedio.start();
-
             }
         }
-
-        /*
-         * Crear Proceso Inicial y Final
-         */
-        ProcesoInicio procesoInicio = new ProcesoInicio(buzonInicio, arr);
-        ProcesoFinal procesoFinal = new ProcesoFinal(buzonFinal);
-
-
-        procesoInicio.start();
-        procesoFinal.start();
-
-
     }
 
     /**
