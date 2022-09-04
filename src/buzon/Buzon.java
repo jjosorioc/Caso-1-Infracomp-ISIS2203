@@ -18,8 +18,6 @@ public class Buzon {
      */
     private LinkedList<String> list;
 
-
-
     /**
      * 
      * @param capacidad
@@ -43,6 +41,7 @@ public class Buzon {
                 System.err.println("Ocurrió un error al intentar almacenar el subconjunto");
             }
 
+            
         this.list.add(s);
         notifyAll();
     }
